@@ -1,4 +1,4 @@
-print("🔥 RUNNING THIS app.py FILE 🔥")
+print("RUNNING THIS app.py FILE")
 from flask import Flask, render_template, request, jsonify
 import requests
 import os
@@ -37,12 +37,12 @@ def make_call():
         "Content-Type": "application/json"
     }
 
-    print("📤 SENDING REQUEST TO:", url)
+    print("SENDING REQUEST TO:", url, flush=True)
 
     response = requests.post(url, json=payload, headers=headers)
 
-    print("📥 STATUS CODE:", response.status_code)
-    print("📥 RAW RESPONSE:", response.text)
+    print("STATUS CODE:", response.status_code, flush=True)
+    print("RAW RESPONSE:", response.text, flush=True)
 
     try:
         data = response.json()
