@@ -9,6 +9,19 @@ A sleek, responsive web application that initiates AI-driven voice calls and pro
 - **Real-time Webhooks**: Processes post-call data via ngrok tunnel.
 - **Modern UI**: Clean, responsive interface with glassmorphism effects.
 
+## 🏗️ Architecture Flow
+
+```mermaid
+graph TD
+    User((User/Browser)) -->|1. Submit Form| Flask[Flask Backend]
+    Flask -->|2. Create Call API| Retell[Retell AI API]
+    Retell -->|3. Call Telephone| User
+    User -->|4. Hangs Up| Retell
+    Retell -->|5. Send Webhook| Ngrok[ngrok Tunnel]
+    Ngrok -->|6. Forward Webhook| Flask
+    Flask -->|7. Log Analysis| Console[Terminal/Log File]
+```
+
 ## 🚀 Getting Started
 
 ### 📦 Prerequisites
