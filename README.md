@@ -74,6 +74,17 @@ graph TD
 - `static/style.css`: Modern styling
 - `.env`: API configuration (Keep it private!)
 - `requirements.txt`: Python dependencies
+- `README.md`: Project documentation
+
+## 🛠️ Troubleshooting
+
+### Recorded Data / Post-Call Analysis Not Appearing
+If you successfully receive a call but the **Call Status**, **Reason for Leaving**, or **Rejoin Interest** fields are missing or empty:
+
+1. **Wait for the Call to End**: Retell AI sends the webhook analysis **after** the call has completely disconnected.
+2. **Dashboard Configuration**: Ensure your Retell Agent has **Post-Call Analysis** enabled. 
+3. **Webhook URL**: Double-check that your ngrok URL + `/webhook` is correctly pasted into the **Webhook URL** field in the Retell Dashboard.
+4. **Check Logs**: Monitor the `webhook_log.json` file in the project root to see the raw data being sent by Retell.
 
 ## 🤝 Contributing
 
