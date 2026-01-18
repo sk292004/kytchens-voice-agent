@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Agent</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <h2>Retell AI Voice Agent</h2>
+    <form id="callForm">
+        <input type="text" name="name" id="name" placeholder="Enter Name" required>
+        <input type="text" name="phone" id="phone" placeholder="Enter Phone (e.g. +1213...)" required>
+        <button type="submit">Call Me</button>
+    </form>
+
+    <div id="status" style="margin-top: 20px;"></div>
+
+    <script>
+        document.getElementById('callForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const statusDiv = document.getElementById('status');
+            statusDiv.innerText = "Initiating call...";
+
+            const formData = new FormData(e.target);
+            const response = await fetch('/call', {
+                method: 'POST',
+                body: formData
+            });
+            const result = await response.json();
+            statusDiv.innerText = JSON.stringify(result, null, 2);
+        };
+    </script>
+</body>
+
+</html>

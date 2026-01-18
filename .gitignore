@@ -1,0 +1,8 @@
+.env
+__pycache__/
+*.pyc
+webhook_log.json
+.vscode/
+.idea/
+venv/
+env/
