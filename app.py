@@ -55,24 +55,19 @@ def make_call():
 @app.route("/webhook", methods=["POST"])
 def webhook():
     data = request.json
-    
-    # Log the raw data to a file for debugging
-    with open("webhook_log.json", "w") as f:
-        import json
-        json.dump(data, f, indent=4)
 
-    print("RECEIVED WEBHOOK DATA:", data)
+    call_analysis = data.get("call_analysis", {})
 
     output = {
-        "call_status": data.get("call_status"),
-        "reason_for_leaving": data.get("analysis", {}).get("reason_for_leaving"),
-        "rejoin_interest": data.get("analysis", {}).get("rejoin_interest")
+        "call_status": "completed" if call_analysis.get("call_successful") else "failed",
+        "reason_for_leaving": call_analysis.get("call_summary"),
+        "rejoin_interest": call_analysis.get("custom_analysis_data")
     }
 
     print("FINAL OUTPUT (PDF COMPLIANT):")
     print(output)
 
-    return jsonify({"status": "received"})
+    return jsonify({"status": "ok"})
 
 
 if __name__ == "__main__":
