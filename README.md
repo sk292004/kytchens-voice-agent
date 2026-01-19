@@ -1,15 +1,15 @@
-# 🎙️ Voice Agent with Retell AI
+# Voice Agent with Retell AI
 
 A sleek, responsive web application that initiates AI-driven voice calls and processes post-call analysis using Retell AI's V2 API.
 
-## ✨ Features
+## Features
 
 - **Instant Outbound Calls**: Trigger calls directly from your browser.
 - **Smart Analysis**: Captures "Reason for Leaving" and "Rejoin Interest" automatically.
 - **Real-time Webhooks**: Processes post-call data via ngrok tunnel.
 - **Modern UI**: Clean, responsive interface with glassmorphism effects.
 
-## 🏗️ Architecture Flow
+## Architecture Flow
 
 ```mermaid
 graph TD
@@ -22,15 +22,15 @@ graph TD
     Flask -->|7. Log Analysis| Console[Terminal/Log File]
 ```
 
-## 🚀 Getting Started
+## Getting Started
 
-### 📦 Prerequisites
+### Prerequisites
 
 - Python 3.10+
 - [ngrok](https://ngrok.com/) account
 - [Retell AI](https://www.retellai.com/) account (API Key, Agent ID, and Phone Number)
 
-### 🛠️ Installation
+### Installation
 
 1. **Clone the repository**:
    ```bash
@@ -51,7 +51,7 @@ graph TD
    RETELL_FROM_NUMBER=+1234567890
    ```
 
-### 🛰️ Running the App
+### Running the App
 
 1. **Start the Flask server**:
    ```bash
@@ -67,7 +67,7 @@ graph TD
    Copy your ngrok forwarding URL (e.g., `https://xxxx.ngrok-free.dev`) and add it to your Agent's settings in the Retell Dashboard as:
    `https://xxxx.ngrok-free.dev/webhook`
 
-## 📂 Project Structure
+## Project Structure
 
 - `app.py`: Main Flask application (Backend)
 - `templates/index.html`: Web interface (Frontend)
@@ -76,7 +76,7 @@ graph TD
 - `requirements.txt`: Python dependencies
 - `README.md`: Project documentation
 
-## 🛠️ Troubleshooting
+## Troubleshooting
 
 ### Recorded Data / Post-Call Analysis Not Appearing
 If you successfully receive a call but the **Call Status**, **Reason for Leaving**, or **Rejoin Interest** fields are missing or empty:
@@ -86,10 +86,10 @@ If you successfully receive a call but the **Call Status**, **Reason for Leaving
 3. **Webhook URL**: Double-check that your ngrok URL + `/webhook` is correctly pasted into the **Webhook URL** field in the Retell Dashboard.
 4. **Check Logs**: Monitor the `webhook_log.json` file in the project root to see the raw data being sent by Retell.
 
-## 🤝 Contributing
+## Contributing
 
 Feel free to open issues or submit pull requests to improve the agent's logic or design!
 
-## 📜 License
+## License
 
 MIT License
